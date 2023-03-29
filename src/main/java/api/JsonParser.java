@@ -10,16 +10,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class JsonParser {
-
     private static final Pattern REGEX_ITEMS = Pattern.compile(".*\\[(.+)\\].*");
     private static final Pattern REGEX_ATRIBUTOS_JSON = Pattern.compile("\"(.+?)\":\"(.*?)\"");
 
-    private static List<Map<String, String>> parse(String json) {
+    protected static List<Map<String, String>> parse(String json) {
         Matcher matcher = REGEX_ITEMS.matcher(json);
-        if (!matcher.find()) {
-
+        if (!matcher.find())
             throw new IllegalArgumentException("Não encontrou items.");
-        }
 
         String[] items = matcher.group(1).split("\\},\\{");
 
@@ -38,11 +35,10 @@ public class JsonParser {
 
             dados.add(atributosItem);
         }
-
         return dados;
     }
 
-    public static List<Film> JsonToFilmList(String json) {
+    protected static List<Film> JsonToFilmList(String json) {
         List<Map<String, String>> mapList = parse(json);
         List<Film> films = new ArrayList<>();
 

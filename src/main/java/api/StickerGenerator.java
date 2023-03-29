@@ -9,10 +9,9 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class StickerGenerator {
-    public void create(String URL, String fileName) throws IOException { //change this.
-        //read image ( WITHOUT @|THIS|.jpg , to make the image bigger !! )
-        //String URL = "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@.jpg";
-        InputStream inputStream = new URL(URL).openStream();
+    protected static void create(String URL, String fileName, String text) throws IOException { //change this.
+        //read image (WITHOUT "._V1_UX128_CR0,12,128,176_AL_", to make the image bigger)
+        InputStream inputStream = new URL(fixURL(URL)).openStream();
         BufferedImage image = ImageIO.read(inputStream);
 
         //create new translucent image
@@ -26,12 +25,11 @@ public class StickerGenerator {
         graphics.drawImage(image, 0, 0, null);
 
         //configure font
-        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 64);
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 80);
         graphics.setColor(Color.YELLOW);
         graphics.setFont(font);
 
         //centralize text
-        String text = "YEAH FILM"; //maybe that could be an argument
         FontMetrics fontMetrics = graphics.getFontMetrics(font);
         int stringWidth = fontMetrics.stringWidth(text);
         int x = (width - stringWidth) / 2; //center horizontally
@@ -42,5 +40,9 @@ public class StickerGenerator {
 
         //put new image in file
         ImageIO.write(newImage, "png", new File("images/" + fileName + ".png"));
+    }
+
+    private static String fixURL(String URL) {
+        return URL.replace("._V1_UX128_CR0,12,128,176_AL_", "");
     }
 }
