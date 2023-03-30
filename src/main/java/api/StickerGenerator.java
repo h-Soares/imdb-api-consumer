@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class StickerGenerator {
-    protected static void create(String URL, String fileName, String text) throws IOException { //change this.
+    protected static void create(String URL, String fileName, String text) throws InterruptedException, IOException {
         //read image (WITHOUT "._V1_UX128_CR0,12,128,176_AL_", to make the image bigger)
         InputStream inputStream = new URL(fixURL(URL)).openStream();
         BufferedImage image = ImageIO.read(inputStream);
