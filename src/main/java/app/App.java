@@ -5,6 +5,7 @@ import api.enums.Topic;
 
 public class App {
     public static void main(String[] args) {
+        //Warning: maybe API image url can change!
         //Connect to API.
         APIConsumer api = new APIConsumer(Topic.MOST_POPULAR_TVS, "k_h163zvxx");
 

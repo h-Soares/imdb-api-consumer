@@ -25,7 +25,7 @@ public class StickerGenerator {
         graphics.drawImage(image, 0, 0, null);
 
         //configure font
-        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 80);
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 95);
         graphics.setColor(Color.YELLOW);
         graphics.setFont(font);
 
@@ -43,6 +43,6 @@ public class StickerGenerator {
     }
 
     private static String fixURL(String URL) {
-        return URL.replace("._V1_UX128_CR0,12,128,176_AL_", "");
+        return URL.replace("._V1_UX128_CR0,3,128,176_AL_", "");
     }
 }

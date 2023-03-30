@@ -47,6 +47,6 @@ public class JsonParser {
     }
 
     private static String fixURL(String URL) {
-        return URL.replace("._V1_UX128_CR0,12,128,176_AL_", "");
+        return URL.replace("._V1_UX128_CR0,3,128,176_AL_", "");
     }
 }
